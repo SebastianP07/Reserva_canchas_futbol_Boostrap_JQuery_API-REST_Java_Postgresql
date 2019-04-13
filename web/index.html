@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title>Tribuna 90 - Mapa</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Bootstrap core CSS-->
+        <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Custom fonts for this template-->
+        <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <!-- Page level plugin CSS-->
+        <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+        <!-- Custom styles for this template-->
+        <link href="css/sb-admin.css" rel="stylesheet">
+
+        <link rel="stylesheet" type="text/css" href="css/Styles.css">
+        <link href="css/perfil.css" rel="stylesheet" type="text/css"/>
+        <link href="css/Mapa.css" rel="stylesheet" type="text/css"/>
+        <link href="css/cFavoritas.css" rel="stylesheet" type="text/css"/>
+        <link href="css/contactenos.css" rel="stylesheet" type="text/css"/>
+        <link href="css/historial.css" rel="stylesheet" type="text/css"/>
+        <link href="css/login.css" rel="stylesheet" type="text/css"/>
+        <link href="css/registro.css" rel="stylesheet" type="text/css"/>
+        <link href="css/restablecerPassword.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body class="fixed-nav sticky-footer bg-dark" id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+            <img src="imagenes/fondo fuego.png" id="logoEncabezado" style="position: fixed;width: 161px;height: auto;z-index: 10;margin: 4% 0% 0% 1%;">
+            <!--            <a class="navbar-brand"><b>Tribuna 90</b></a>-->
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard" style="margin-top: 32%;">
+                        <a class="nav-link" id="NavPerfil">
+                            <img src="imagenes/Perfil.png" height="34px" width="auto" id="logoEncabezado">
+                            <span class="nav-link-text">Perfil</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
+                        <a class="nav-link" id="NavMapa">
+                            <img src="imagenes/Mapa.png" height="34px" width="auto" id="logoEncabezado">
+                            <span class="nav-link-text">Mapa</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
+                        <a class="nav-link" id="NavReservas">
+                            <img src="imagenes/reservas.png" height="34px" width="auto" id="logoEncabezado">
+                            <span class="nav-link-text">Reservas</span>
+                        </a>
+                    </li>
+                    <br>
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables" hidden="true">
+                        <a class="nav-link" id="NavCFavoritas">
+                            <img src="imagenes/favoritos.png" height="34px" width="auto" id="logoEncabezado">
+                            <span class="nav-link-text">Mis Canchas favoritas</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+                        <a class="nav-link"  id="NavHistorial">
+                            <img src="imagenes/historial.png" height="34px" width="auto" id="logoEncabezado">
+                            <span class="nav-link-text">Historial</span>
+                        </a>
+                    </li>
+                    <br>
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages" hidden="true">
+                        <a class="nav-link" data-toggle="collapse" id="NavConfiguracion">
+                            <img src="imagenes/configuracion.png" height="34px" width="auto" id="logoEncabezado">
+                            <span class="nav-link-text">Configuración</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
+                        <a class="nav-link " id="NavContactenos">
+                            <img src="imagenes/Contactenos.png" height="34px" width="auto" id="logoEncabezado">
+                            <span class="nav-link-text">Contáctenos</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- SLIDE PARA OCULTAR EL MENU -->
+                <ul class="navbar-nav sidenav-toggler">
+                    <li class="nav-item">
+                        <a class="nav-link text-center" id="sidenavToggler" style="background-color: #232529;">
+                            <i class="fa fa-fw fa-angle-left"></i>
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- BARRA SUPERIOR -->
+                <p class="nav-item" id="usuarioLogin" style="color: chartreuse; margin-bottom: 0px; font-size: 20px; margin-left: 27%;"></p>
+                <ul class="navbar-nav ml-auto">
+                    <!-- CERRAR SESION -->
+                    <li class="nav-item" id="cerrarSesion">
+                        <a class="nav-link " data-toggle="modal" data-target="#CerrarSesionVentana">
+                            <i class="fa fa-fw fa-sign-out"></i>Cerrar Sesión</a>
+                    </li>
+                    <li class="nav-item" id="iniciarSesion">
+                        <a class="nav-link" id="pagInicioSesion">Iniciar Sesión</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- IMAGEN PRINCIPAL -->
+        <div id="fondoFadeOut">
+            <img src="imagenes/imagenFadeOut.jpg" id="imagenPrincipalFadeOut">
+            <img src="imagenes/LOGO_Original.png" id="logoFAdeOut" style="position: absolute;z-index: 1128;width: 29%;margin: -3% 0% 0% 35%;" alt=""/>
+        </div>
+
+
+        <!--  LOGIN -->
+        <div id="fondoLogin">
+            <img src="imagenes/Fondo_1.jpg" id="imagenLoginRegistroContra">
+            <a><span id="btnVolver" class="fa fa-4x fa-arrow-circle-o-left"></span></a>
+        </div>
+        <div class="container" id="pagLogin">
+            <div class="card card-login mx-auto mt-5" id="cajaLogin">
+                <div class="card-header"><h3>Inicio Sesión</h3></div>
+                <img src="imagenes/LOGO_Original.png" height="auto" width="170px" id="logoLogin" style="margin-left: 29%;">
+                <form method="post" enctype="multipart/form-data" onsubmit="return false">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <div class="form-label-group">
+                                <label for="inputUsuario">Usuario</label>
+                                <input type="text" id="user" class="form-control" placeholder="Usuario" required="required" autofocus="autofocus">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-label-group">
+                                <label for="inputPassword">Contraseña</label>
+                                <input type="password" id="pass" class="form-control" placeholder="Contraseña" required="required">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="remember-me">
+                                    Recordar Contraseña
+                                </label>
+                            </div>
+                        </div>
+
+                        <input id="btnInicioSesion" type="submit" value="Iniciar Sesión" class="btn btn-info btn-block" >
+                        <div class="text-center">
+                            <a class="d-block small mt-3" id="registrarCuentaLogin" href="#registrarCuentaLogin">Registrar Cuenta</a>
+                            <!--                        <a class="d-block small">Olvido su contraseña?</a>-->
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!--  REGISTRO -->
+        <div class="container" id="pagRegistro">
+            <div class="card card-register mx-auto mt-5" style="margin: -2% 0% 0% 21% !important;">
+                <div class="card-header"><h3>Registrar</h3></div>
+                <div class="row">
+                    <div class="col-lg-3">
+                        <img src="imagenes/LOGO_Original.png" height="auto" width="170px" id="logoRegistrar">
+                        <!-- COLOCAR EL CARGUE DE LA IMAGEN-->
+                        <!--<img id="img1"><br/>-->
+                        <!--<input id="inputFile1" type="file">-->
+                    </div>
+                    <div class="card-body col-lg-9">
+                        <form style="margin-right: 2%">
+                            <div class="form-group">
+                                <div class="form-row">
+                                    <div class="col-md-6">
+                                        <div class="form-label-group">
+                                            <label for="firstName">Primer Nombre</label>
+                                            <input type="text" id="pnommbre" class="form-control" placeholder="Primer Nombre" required="required" autofocus="autofocus">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-label-group">
+                                            <label for="lastName">Segundo Nombre</label>
+                                            <input type="text" id="snombre" class="form-control" placeholder="Segundo Nombre" required="required">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-label-group">
+                                            <label for="lastName">Primer Apellido</label>
+                                            <input type="text" id="papellido" class="form-control" placeholder="Primer Apellido" required="required">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-label-group">
+                                            <label for="lastName">Segundo Apellido</label>
+                                            <input type="text" id="sapellido" class="form-control" placeholder="Segundo Apellido" required="required">
+                                        </div>
+                                    </div>      
+                                    <div class="col-md-6">
+                                        <div class="form-label-group">
+                                            <label for="inputfecha">Fecha de Nacimiento</label>
+                                            <input type="date" name="cumpleanios" step="1" min="1945-01-01" max="2018-12-31" value="2013-01-01" id="fechaNacimiento" class="form-control" placeholder="Fecha de Nacimiento" required="required">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-label-group">
+                                            <label for="message-text" class="col-form-label">Genero </label>
+                                            <select class="form-control" id="genero">
+                                                <option>Masculino</option>
+                                                <option>Femenino</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-label-group">
+                                            <label for="inputUsuaio">Usuario</label>
+                                            <input type="text" id="usuario" class="form-control" placeholder="Usuario" required="required">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-label-group">
+                                            <label for="inputEmail">Correo Electronico</label>
+                                            <input type="email" id="emailRegistro" class="form-control" placeholder="Correo Electronico" required="required">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-label-group">
+                                            <label for="inputPassword">Contraseña</label>
+                                            <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required="required">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-label-group">
+                                            <label for="confirmPassword">Confirmar Contraseña</label>
+                                            <input type="password" id="confirmPassword" class="form-control" placeholder="Confirmar Contraseña" required="required">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a id="btnRegistrarUsuario" class="btn btn-primary btn-block" >Registrar</a>
+                        </form>
+                        <div class="text-center">
+                            <a class="d-block mt-3" id="iniciarSesionRegistro" href="#iniciarSesionRegistro">Iniciar Sesión</a>
+                            <!--<a class="d-block small" >Olvidaste la Contraseña?</a>-->
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!--  OLVIDO CONTRASEÑA -->
+        <div class="container" id="pagOlvidoContras" hidden="true">
+            <div class="card card-login mx-auto mt-5">
+                <div class="card-header"><h4>Restablecer la contraseña</h4></div>
+                <div class="card-body">
+                    <div class="text-center mb-4">
+                        <h4>Olvidaste la contraseña?</h4>
+                        <p>Ingrese su email registrado y siga las instrucciones para reestablecer la contrseña</p>
+                    </div>
+                    <form>
+                        <div class="form-group">
+                            <div class="form-label-group">
+                                <label for="inputEmail">Dirección de correo</label>
+                                <input type="email" id="inputEmail" class="form-control" placeholder="Dirección de correo" required="required" autofocus="autofocus">
+                            </div>
+                        </div>
+                        <a class="btn btn-primary btn-block" id="resetPass" style="color: white;">Restablecer contraseña</a>
+                    </form>
+                    <div class="text-center">
+                        <a class="d-block small mt-3" >Resgistrar cuenta</a>
+                        <a class="d-block small" >Inicio Sesión</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <!-- CUERPO DE LA PAGINA -->
+        <div class="content-wrapper" id="cuerpoPagina">
+
+            <!-- PERFIL USUARIO -->
+            <div class="container-fluid" id="pagPerfilUsuario" style="background-color: black;height: 758px;position: fixed;margin-top: -25px;">
+                <!-- Breadcrumbs-->
+                <ol class="breadcrumb" hidden="true">
+                    <li class="breadcrumb-item">
+                        <a >Inicio</a>
+                    </li>
+                    <li class="breadcrumb-item active">Perfil</li>
+                </ol>
+                <div class="row">
+                    <div id="contenedorDataUsuario" class="col-12">
+                        <img src="imagenes/estadioGris.png" style="position: absolute;margin: -7% 0% 0% -8%;width: 85%;"/>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <img src="imagenes/LOGO.png" height="300px" width="auto" id="logoEncabezado" style="margin: 4% 0% 0% 8%;">
+                            </div>
+                            <div class="col-lg-8">
+                                <!-- DATOS USUARIO -->
+                                <div class="form-group">
+                                    <div class="form-row">
+                                        <div class="col-md-1">
+                                        </div>
+                                        <div class="col-md-10" style="margin-top: 5%; color: whitesmoke;">
+                                            <div class="container" id="cajaPerfil">
+                                                <div class="form-label-group">
+                                                    <label for="firstName">Nombres:<b></b> </label>
+                                                    <span><b id="nombresUsuarioPerfil"></b></span>
+                                                </div>
+                                                <div class="form-label-group">
+                                                    <label for="lastName">Apellidos: </label>
+                                                    <span><b id="apellidosUsuarioPerfil"></b></span>
+                                                </div>
+                                                <div class="form-label-group">
+                                                    <label for="inputfecha">Fecha de Nacimiento</label>
+                                                    <span><b id="fechaNacimientoPerfil"></b></span>
+                                                </div>
+                                                <div class="form-label-group">
+                                                    <label for="inputUsuaio">Usuario</label>
+                                                    <span><b id="usuarioPerfil"></b></span>
+                                                </div>
+                                                <div class="form-label-group">
+                                                    <label for="inputEmail">Email: </label>
+                                                    <span><b id="emailPerfil"></b></span>
+                                                </div>
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <button id="btnEditarUsuarioModal" onclick="return false;" class="btn btn-danger" hidden="true"><b>Editar</b></button>
+                                                        <!-- MODAL EDICION USUARIO -->
+                                                        <div class="modal fade" id="modalEditarUsuario" data-backdrop ="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="ModalLabel">Edición Usuario</h5>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <form>
+                                                                            <div class="form-group">
+                                                                                <div class="row">
+                                                                                    <div class="col-lg-6">
+                                                                                        <label for="recipient-name" class="col-form-label">Primer Nombre:</label>
+                                                                                        <input type="text" class="form-control" id="edicionPNombre">
+                                                                                        <label for="recipient-name" class="col-form-label">Segundo Nombre:</label>
+                                                                                        <input type="text" class="form-control" id="edicionSNombre">
+                                                                                    </div>
+                                                                                    <div class="col-lg-6">
+                                                                                        <label for="recipient-name" class="col-form-label">Primer Apellido:</label>
+                                                                                        <input type="text" class="form-control" id="edicionPApellido">
+                                                                                        <label for="recipient-name" class="col-form-label">Segundo Apellido:</label>
+                                                                                        <input type="text" class="form-control" id="edicionSApellido">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <div class="row">
+                                                                                    <div class="col-lg-6">
+                                                                                        <label for="message-text" class="col-form-label">Fecha de nacimiento: </label>
+                                                                                        <input type="date" name="cumpleanios" step="1" min="1945-01-01" max="2018-12-31" value="2013-01-01" id="edicionFechaNacimiento" class="form-control" placeholder="Fecha de Nacimiento" required="required">
+                                                                                    </div>
+                                                                                    <div class="col-lg-6">
+                                                                                        <label for="message-text" class="col-form-label">Genero: </label>
+                                                                                        <select class="form-control" id="edicionGenero">
+                                                                                            <option>Masculino</option>
+                                                                                            <option>Femenino</option>
+                                                                                        </select>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="container">
+                                                                                    <div class="row">
+                                                                                        <label for="message-text" class="col-form-label">Email: </label>
+                                                                                        <input type="text" class="form-control" id="edicionEmail">
+                                                                                    </div>
+                                                                                    <div class="row">
+                                                                                        <label for="message-text" class="col-form-label">Contraseña: </label>
+                                                                                        <input type="password" class="form-control" id="edicionPassword">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                                                                        <button type="button" class="btn btn-success" id="btnEditarUsuario">Aceptar</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MAPA -->
+            <div class="container-fluid" id="pagMapa" style="background-color: black;">
+                <div class="card cardMapa">
+                    <!-- Breadcrumbs-->
+                    <ol class="breadcrumb" hidden="true">
+                        <li class="breadcrumb-item">
+                            <a>Inicio</a>
+                        </li>
+                        <li class="breadcrumb-item active">Mapa</li>
+                    </ol>
+                    <div class="row" style="    overflow-y: hidden;margin: 1% 1% 1% 1%;min-height: 505px;max-height: 594px;">
+                        <div id='ubicacion'></div>
+                        <!-- Se escribe un mapa con la localizacion anterior-->
+                        <div id="demo"></div>
+                        <div id="mapholder"></div>
+                        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7vooyQVZwzbCJAnaMOtycJ8gt4B15FxM&callback" type="text/javascript"></script>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RESERVAS -->
+            <div class="container-fluid" id="pagReservas">
+                <!-- Breadcrumbs-->
+                <ol class="breadcrumb" hidden="true">
+                    <li class="breadcrumb-item">
+                        <a>Inicio</a>
+                    </li>
+                    <li class="breadcrumb-item active">Reservas Activas</li>
+                </ol>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card cardReservas">
+                            <div class="card-header text-center">
+                                <div class="row">
+                                    <div class="container">
+                                        <h3 style="text-align: center;"><b>Reservas Activas</b></h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <button id="btnActualizarReservas" class="btn btn-info" style="margin-left: 88%;" hidden="true">Actualizar</button>
+                                    <table class="table table-bordered table-hover text-center" id="tblReservas" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>id Reserva</th>
+                                                <th>Fecha</th>
+                                                <th>Hora</th>
+                                                <th>Establecimiento</th>
+                                                <th>Cancha</th>
+                                                <th>Observaciones</th>
+                                                <th>Cancelar</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="card-footer small text-muted">
+                                <p id="fechaConsultaReserva"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CANCHAS FAVORITAS -->
+            <div class="container-fluid" id="pagCanchasFavoritas">
+
+                <!-- Breadcrumbs-->
+                <ol class="breadcrumb" hidden="true">
+                    <li class="breadcrumb-item">
+                        <a>Inicio</a>
+                    </li>
+                    <li class="breadcrumb-item active">Favoritas</li>
+                </ol>
+                <div class="row">
+                    <div id="A" class="col-12">
+                        <div class="row">
+                            <div class="container">
+                                <div class="col-2-lg">
+                                    <button id="btnCargarCanchasFavoritas" class="btn btn-info">Cargar Canchas</button>
+                                </div>
+                                <div class="col-10-lg">
+                                    <h1 style="text-align: center; padding-bottom: 10px;">Canchas Favoritas</h1>
+                                </div>
+                            </div>
+                        </div>
+                        <form id="containerCanchasFavoritas" class="container" style="display: block;">
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- HISTORIAL -->
+            <div class="container-fluid" id="pagHistorial">
+
+                <!-- Breadcrumbs-->
+                <ol class="breadcrumb" hidden="true">
+                    <li class="breadcrumb-item">
+                        <a>Inicio</a>
+                    </li>
+                    <li class="breadcrumb-item active">Historial</li>
+                </ol>
+                <div class="row" id="fondoCancha">
+                    <div class="col-lg-12">
+                        <div class="card cardHistorial">
+                            <div class="card-header text-center">
+                                <div class="row">
+                                    <div class="container">
+                                        <h3 style="text-align: center;"><b>Historial de Reservas</b></h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <button id="btnActualizarReservasHistorico" class="btn btn-info" style="margin-left: 88%;" hidden="true">Actualizar</button>
+                                    <table class="table table-bordered table-hover text-center" id="tblReservasHistorico" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>id Reserva</th>
+                                                <th>Fecha</th>
+                                                <th>Hora</th>
+                                                <th>Establecimiento</th>
+                                                <th>Cancha</th>
+                                                <th>Observaciones</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="card-footer small text-muted">
+                                <p id="fechaConsultaHistorico"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CONTACTENOS -->
+            <div class="container-fluid" id="pagContactenos" style="height: -webkit-fill-available;">
+                <div class="card cardContactenos">
+                    <!-- Breadcrumbs-->
+                    <ol class="breadcrumb" hidden="true">
+                        <li class="breadcrumb-item">
+                            <a>Inicio</a>
+                        </li>
+                        <li class="breadcrumb-item active">Contactenos</li>
+                    </ol>
+                    <div class="row">
+                        <div id="panelContactenos" class="col-lg-7">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-3"></div>
+                                    <div class="col-lg-6">
+                                        <img id="logoTribuna" src="imagenes/LOGO_Original.png" >
+                                    </div>
+                                    <div class="col-lg-3"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="container text-center" style="margin: 2% 0% 3% 0%;">
+                                        <p>¡Hola! Para ponerte encontacto con nosotros llena este formulario o envianos un correo a <b>tribuna90@gmail.com</b></p>
+                                        <p>Te responderemos en la mayor brevedad posible</p>
+                                        <p>Gracias.</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3"></div>
+                                    <div class="col-lg-6">
+                                        <div id="cajaDesarrolladores" class="container">
+                                            <img id="imgSebastian" src="imagenes/team1.jpg"/>
+                                            <h6 style="margin-top: 10px;">Sebastian Pinto</h6>
+                                            <h8>Estudiante Ingenieria de Sistemas</h8>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3"></div>
+                                    <div class="col-lg-6" hidden="true">
+                                        <div id="cajaDesarrolladores" class="container">
+                                            <img id="imgAlberto" src="imagenes/team2.jpg"/>
+                                            <h6 style="margin-top: 10px;">Alberto Ramirez</h6>
+                                            <h8>Estudiante Ingenieria de Sistemas</h8>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="panelContactenos" class="col-lg-5">  
+                            <div class="container contenedorDatos">
+                                <h1 style="text-align: center; margin-bottom: 7%;">Contáctenos</h1>
+                                <input type="text" id="nombreContactenos" class="form-control" placeholder="Nombre" required="required" autofocus="autofocus">
+                                <input type="text" id="emailContactenos" class="form-control" placeholder="Email" required="required" autofocus="autofocus">
+                                <textarea name="" id="cajaMensajeContactenos" class="form-control" data-required_mark="required" data-field_type="text" data-original_id="mensaje" placeholder="Escribenos un mensaje..."></textarea>
+                                <input id="btnEnviarDatos" type="submit" value="Enviar" class="btn btn-success btn-block" >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ESTABLECIMIENTOS Y CANCHAS -->
+            <div id="establecimientoDefault" class="container-fluid">
+                <!-- ESTABLECIMIENTO -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card cardEstablecimiento">
+                            <div class="container">
+                                <div class="row">
+                                    <!--  CAROUSEL -->
+                                    <div id="carouselImag" class="carousel slide" data-ride="carousel">
+                                        <ol class="carousel-indicators">
+                                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                                        </ol>
+                                        <div class="carousel-inner">
+                                            <!-- IMAGANES CAROUSEL -->
+                                            <div class="carousel-item active" id="imgCarousel_1"></div>
+                                            <div class="carousel-item" id="imgCarousel_2"></div>
+                                            <div class="carousel-item" id="imgCarousel_3"></div>
+                                            <div class="carousel-item" id="imgCarousel_4"></div>
+                                        </div>
+                                        <!--                                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                                                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                                                    <span class="sr-only">Anterior</span>
+                                                                                </a>
+                                                                                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                                                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                                                    <span class="sr-only">Siguiente</span>
+                                                                                </a>-->
+                                    </div>
+                                </div>
+                                <div class="container" style="margin: 0% 0% 5% 0%;">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <!-- PANEL IZQUIERDO -->
+                                            <div class="col-lg-6">
+                                                <!-- CARDS CANCHAS -->
+                                                <div id="contenedorCardsCanchas" class="row"></div>
+                                            </div>
+                                            <!-- PANEL DERECHO -->
+                                            <div class="col-lg-6">
+                                                <div class="row">
+                                                    <!-- DESCRIPCION DE LA CANCHA -->
+                                                    <div class="container"><h2><b>Descripción</b></h2></div>
+                                                    <div id="descripcionEstabl" class="container"></div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="container"><h2><b>Servicios Ofrecidos</b></h2></div>
+                                                    <!-- SERVICIOS OFRECIDOS -->
+                                                    <div id="contenedorServiciosOfrecidos" class="container"></div>
+                                                </div>
+                                                <div class="row">
+                                                    <!-- REDES SOCIALES -->
+                                                    <h7><b>Redes Sociales</b></h7>
+                                                    <div id="contenedorRedes" class="container" style="margin-top: 3%;"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- MODAL CANCHAS -->
+                <div class="modal fade" id="modalCancha" data-backdrop ="static" tabindex="-1" role="dialog" aria-labelledby="modalCancha" aria-hidden="true">
+                    <div class="modal-dialog" role="document" style="max-width: 917px !important;">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="ModalLabel"><b><span id="modalLabelCancha" style="text-align: center;"></span></b></h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="container">
+                                            <div class="row">
+                                                <!--  CAROUSEL -->
+                                                <div id="carouselImag" class="carousel slide" data-ride="carousel">
+                                                    <ol class="carousel-indicators">
+                                                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                                                    </ol>
+                                                    <div class="carousel-inner">
+                                                        <div class="carousel-item active" id="imgCarousel_1_cancha"></div>
+                                                        <div class="carousel-item" id="imgCarousel_2_cancha"></div>
+                                                        <div class="carousel-item" id="imgCarousel_3_cancha"></div>
+                                                    </div>
+                                                    <!--                                                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                                                                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                                                                            <span class="sr-only">Anterior</span>
+                                                                                                        </a>
+                                                                                                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                                                                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                                                                            <span class="sr-only">Siguiente</span>
+                                                                                                        </a>-->
+                                                </div>
+                                            </div>
+                                            <div class="row" style="margin-top: 5%;">
+                                                <!-- PANEL IZQUIERDO -->
+                                                <div class="col-lg-6">
+                                                    <div class="container">
+                                                        <h6><b>Capacidad: </b></h6>
+                                                        <span id="capacidadCancha"></span>
+                                                    </div>
+                                                    <div class="container" style="margin-top: 5%;">
+                                                        <h6><b>Tipo de grama: </b></h6>
+                                                        <span id="tipoGramaCancha"></span>
+                                                    </div>
+                                                    <div class="container" style="margin: 57% 0% 0% 0%; display: grid;">
+                                                        <form id="formCOnsultaDisponibilidad">
+                                                            <p>Fecha Consulta: 
+                                                                <input type="date" id="datepickerCancha">
+                                                            </p>
+                                                        </form>
+                                                        <div class="row">
+                                                            <div class="col-lg-6">
+                                                                <button class="btn btn-info" id="btnConsultarCancha">Consultar</button>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <button class="btn btn-danger" id="btnBorrarBusqeudaCancha">Borrar busqueda</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- PANEL DERECHO -->
+                                                <div class="col-lg-6">
+                                                    <h6><b>Caracteristicas: </b></h6>
+                                                    <span id="caracteristicasCancha"></span>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <!-- PANEL RESERVAS -->
+                                                <div class="col-lg-12">
+                                                    <div class="card">
+                                                        <div class="card-header text-center">
+                                                            <h3><b>Disponibilidad de la cancha</b></h3>
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <div class="table-responsive">
+                                                                <button id="btnActualizarReservas" class="btn btn-info" style="margin-left: 88%;" hidden="true">Actualizar</button>
+                                                                <table class="table table-bordered table-hover text-center" id="tblCalendarioCancha" width="100%" cellspacing="0">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>Hora</th>
+                                                                            <th>Observacion</th>
+                                                                            <th>Precio</th>
+                                                                            <th style="width: 5% !important;">Reservar</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card-footer small text-muted">
+                                                            <p id="fechaConsultaCalendario"></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal" id="cerrarModalCanchas">Cerrar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FOOTER -->
+            <footer class="sticky-footer" style="background-color: #232529; color: whitesmoke;">
+                <div class="container">
+                    <div class="text-center">
+                        <small>Copyright © Your Website 2018 - Tribuna 90</small>
+                    </div>
+                </div>
+            </footer>
+
+            <!-- CUADRO DE SCROLL CUANDO EL CONTENIDO SUPERA EL TAMAÑO DE LA PANTALLA -->
+            <a class="scroll-to-top rounded" href="#page-top">
+                <i class="fa fa-angle-up"></i>
+            </a>
+
+            <!-- CERRAR SESIÓN --------------- Modal VENTANA EMERGENTE PARA CERRAR SESIÓN-->
+            <div class="modal fade" id="CerrarSesionVentana" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">¡ Cerrar Sesión !</h5>
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">¿Está seguro que quiere cerrar la Sesión?</div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary" onclick="cerrarSesionUsuario()" id="cerrarSesionUsu">Cerrar Sesión</button>
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bootstrap core JavaScript-->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- Core plugin JavaScript-->
+        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+        <!-- Page level plugin JavaScript-->
+        <script src="vendor/datatables/jquery.dataTables.js"></script>
+        <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+        <!-- Custom scripts for all pages-->
+        <script src="js/sb-admin.min.js"></script>
+        <!-- Custom scripts for this page-->
+        <script src="js/sb-admin-datatables.min.js"></script>
+        <script src="js/funcionalidades.js" type="text/javascript"></script>
+    </body>
+</html>

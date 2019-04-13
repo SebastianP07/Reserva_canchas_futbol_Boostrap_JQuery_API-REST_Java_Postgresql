@@ -1,0 +1,38 @@
+.contenedorDatos{
+    margin-top: 10% !important;
+}
+
+.contenedorDatos input, textarea {
+    margin-top: 7px;
+}
+
+#logoTribuna{
+    max-width: 69%;
+    margin: 1% 0% -1% 15%;
+}
+
+
+#cajaMensajeContactenos{
+    height: 226px;
+}
+
+#imgSebastian, #imgAlberto{
+    border-radius: 700px;
+    overflow: hidden;
+    margin-top: -100px;
+    box-shadow: 0 0 20px rgba(0,0,0,.1);
+    border: 2px solid #fff;
+    max-width: 63%;
+    height: auto;
+}
+
+#cajaDesarrolladores{
+    text-align: center;
+    background-color: darkslategrey;
+    color: whitesmoke;
+    border-radius: 50px;
+    margin-top: 20%;
+    padding-bottom: 10px;
+    margin-bottom: 14px;
+}
+

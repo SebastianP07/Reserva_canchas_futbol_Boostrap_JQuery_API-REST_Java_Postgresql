@@ -1,0 +1,37 @@
+/*------------CASOUSEL------------*/
+/*TAMAÑO DEL CAROUSEL*/
+/*CONTROLA EL TAMAÑO DE LAS IMAGENES*/
+#carouselImag, #carouselImag img{
+    width: -webkit-fill-available !important;
+    height: 380px !important;
+    margin: 1% 1% 1% 1%;
+}
+#contenedorRedes img{
+    width: 40px;
+    height: 40px;
+}
+#descripcionEstabl, 
+#contenedorServiciosOfrecidos, 
+#contenedor,
+#contenedorCardsCanchas{
+    margin-top: 5%;
+}
+
+#descripcionEstabl .card, 
+#contenedorServiciosOfrecidos .card,
+#contenedor .card,
+#contenedorCardsCanchas .card{
+    margin: 0% 0% 0% 0% !important;
+    padding: 0% 0% 0% 0% !important;
+}
+#descripcionEstabl .card:hover,  
+#contenedorServiciosOfrecidos .card:hover,
+#contenedor .card:hover,
+#contenedorCardsCanchas .card:hover{
+    box-shadow: 0 0 20px yellowgreen;
+}
+
+/*#contenedor{
+    border: solid black;
+    margin-top: 10px;
+}*/

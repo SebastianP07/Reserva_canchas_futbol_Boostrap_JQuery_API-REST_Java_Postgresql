@@ -1,0 +1,70 @@
+
+.navbar-brand{
+    color: #868e96 !important;
+}
+
+/*LOGO DEL ENCABEZADO*/
+#logoEncabezado{
+    padding-right: 5px;
+}
+
+/*MENU IZQUIERDO*/
+#NavPerfil{
+    padding-top: 66px !important;
+}
+
+.nav-link-text:hover{
+    color: #F39C12 !important;
+}
+
+/*COLOR DE LA BARRA SUPERIOR*/
+#mainNav, #navbarResponsive, #exampleAccordion{
+    background-color: #030404 !important;
+}
+
+/*ICONOS DE NOTIFICACION DE LA BARRA SUPERIOR*/
+#alertsDropdown{
+    padding-right: 9.2rem !important;
+}
+
+/*CAJA INICIO SESION*/
+#cajaInicioSesion{
+    text-align: -webkit-center;
+    padding-bottom: 41px;
+}
+
+/*CAJA REGISTRO*/
+#cajaRegistro{
+    margin: 10px 10px 10px 10px;  
+}
+
+.genero .col-6{
+    text-align: center;
+}
+
+#logoRegistrar{
+    margin: 10px auto;
+    display: block;
+}
+
+
+/*CUADRO INICIO SESION*/
+#btnRegistro{
+    background-color: #27AE60 ;
+    color: white ;
+    margin-right: 137px ;
+}
+
+/*MIS CANCHAS FAVORITAS*/
+#cajaCFavoritas{
+    width: 40%;
+}
+
+
+#cuerpoPagina{
+    background-color: black;
+}
+.cardReservas, .cardHistorial, .cardEstablecimiento, .cardContactenos, .cardMapa, .card-register, .card-login{
+    border-radius: 20px;
+    box-shadow: 0 0 15px #ffffff;
+}
